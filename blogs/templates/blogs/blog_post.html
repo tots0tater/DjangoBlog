@@ -1,0 +1,79 @@
+﻿{% load blog_methods %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
+	<meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+	<div id="login-info">
+		{% if user.is_authenticated %}
+		<p>Hello {{ user.get_username }}!</p>
+		{% if user.is_superuser %}
+		<a href="/admin/">Admin page</a>
+		/
+		{% endif %}
+		<a href="{% url 'blog:logout_view' %}">Sign out</a>
+		{% else %}
+		<a href="{% url 'blog:login' %}">Login</a>
+		/
+		<a href="{% url 'blog:register' %}">Create Account</a>
+		{% endif %}
+	</div>
+
+	<div class="blog-post">
+		<h1 class="post-title">{{ blogpost.post_title }}</h1>
+		<p class="post-text">{{ blogpost.post_text }}</p>
+		<p class="post-footer">Posted on {{ blogpost.pub_date }}</p>
+
+		<div id="blog-post-comments">
+			{% for comment in blogpost.comment_set.all %}
+			<div id="blog{{ blogpost.id }}-comment{{ comment.id }}" class="blog-comments">
+				<p class="comment-text">{{ comment.comment_text }}</p>
+				<p class="comment-footer">Posted by {{ comment.user_id|get_username_from_id }} on {{ comment.pub_date }}.</p>
+				
+				{% if user.id == comment.user_id or user.is_superuser %}
+				<div class="comment-management">
+					<form action="{% url 'blog:delete_comment' %}" method="post" accept-charset="utf-8">
+						{% csrf_token %}
+						<input type="hidden" name="comment-id" value="{{ comment.id }}" />
+						<input type="hidden" name="blog-id" value="{{ blogpost.id }}" />
+						<button type="submit">Delete comment.</button>
+					</form>
+
+					<form action="{% url 'blog:edit_comment' %}" method="post" accept-charset="utf-8">
+						{% csrf_token %}
+						<input id="edit-comment-textbox" type="text" name="edit-comment-textbox" />
+						<input type="hidden" name="comment-id" value="{{ comment.id }}" />
+						<input type="hidden" name="blog-id" value="{{ blogpost.id }}" />
+						<button type="submit">Update comment</button>
+					</form>
+				</div>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+		
+	{% if user.is_authenticated %}
+	<form action="{% url 'blog:post_comment' %}" method="post" accept-charset="utf-8">
+		{% csrf_token %}
+		<div id="comment-area">
+			<textarea id="comment-textarea" name="comment-textarea" rows="4" cols="50"></textarea>
+			<br />
+			<button type="submit">Submit comment.</button>
+			<input type="hidden" name="blog-id" value="{{ blogpost.id }}" />
+		</div>
+	</form>
+	{% else %}
+		<p id="no-signin">Please sign in to comment.</p>
+	{% endif %}
+
+	<a href="{% url 'blog:index' %}"><-- Back</a>
+</body>
+</html>

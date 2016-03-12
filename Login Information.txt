@@ -1,0 +1,15 @@
+ADMIN
+Username:	ben
+email:		oops forgot
+password:	this_is_password
+
+
+REGULAR USERS
+Username: 	a
+email:		b
+password:	c
+
+
+Username: 	adam-carter
+email:		oops forgot
+password: 	abc

@@ -1,0 +1,22 @@
+﻿{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
+	<meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+	<h1 id="logout-header">Successfully logged out.</h1>
+	<script>
+    function redirect(){
+       window.location.href = "/blogs/";
+    }
+
+    setTimeout(redirect, 2000); //2000 is equivalent to 2 seconds
+	</script>
+</body>
+</html>

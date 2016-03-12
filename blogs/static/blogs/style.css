@@ -1,0 +1,91 @@
+div {
+	padding: 10px;
+}
+
+.blog-post {
+	background-color: #4483C4;
+
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	padding: 50px;
+
+	border: solid;
+	border-width: 5px;
+}
+
+.blog-comments {
+	background-color: #182E45;
+	padding: 15px;
+
+	max-width: 75%;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+#blog-title {
+	clear: both;
+	text-align: center;
+	font-weight: bold;
+	font-size: 50px;
+}
+
+#login-info > *{
+	display: inline;
+}
+
+#create-new-blog {
+	clear: both;
+	text-align: center;
+}
+
+.post-title {
+	font-weight: bold;
+}
+.post-title a {
+	color: #A5C44A;
+}
+
+.comment-text,
+.post-text {
+	font-size: 20px;
+}
+.comment-footer {
+	font-size: 11px;
+	color: #7FA1C4;
+}
+.post-footer {
+	color: black;
+	font-size: 11px;
+}
+
+#comment-area {
+	clear: both;
+	text-align: center;
+}
+
+.comment-management > * {
+	display: inline;
+}
+
+#no-signin {
+	clear: both;
+	text-align: center;
+}
+
+button {
+	color: black;
+}
+
+#logout-header {
+	clear: both;
+	text-align: center;
+
+	padding-top: 50px;
+}
+
+.account-page {
+	margin-left: 50px;
+	margin-top: 30px;
+}

@@ -1,0 +1,43 @@
+﻿{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<div><a id="account-redirect" href="{% url 'blog:index' %}">Back to home.</a></div>
+
+	{% if error_message %}
+	<p>{{ error_message }}</p>
+	{% endif %}
+
+	<form action="{% url 'blog:create_account' %}" method="post" accept-charset="utf-8">
+		{% csrf_token %}
+		<div class="account-page">
+			<label>Username: </label>
+			<input name="username" type="text" />
+
+			<br />
+
+			<label>Email: </label>
+			<input name="email" type="text" />
+
+			<br />
+
+			<label>Password: </label>
+			<input name="password" type="password" />
+
+			<br />
+
+			<input type="hidden" name="next" value="{{ next }}" />
+			<input class="button small" type="submit" value="Submit" />
+		</div>
+		
+	</form>
+</body>
+</html>

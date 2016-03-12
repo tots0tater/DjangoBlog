@@ -1,0 +1,27 @@
+1. INSTALLATION:
+	Download and install instructions:
+	
+		https://docs.djangoproject.com/en/1.9/topics/install/#installing-an-official-release-with-pip
+
+
+2. RUNNING DJANGO SERVER
+	Once downloaded and working, go to the directory where you
+	downloaded the blog. In linux or windows, open up a terminal/
+	command prompt and type the following command in:
+
+		python manage.py runserver
+
+	After success (hopefully), navigate to the page in the browser
+	the output tells you to. On my machines, it was 
+
+		127.0.0.1:8000
+
+
+3. TEST OUT SOME LINKS
+	Some of the supported URLs include (from base address):
+
+		/blogs/
+		/blogs/[blog-no]
+		/blogs/login/
+		/blogs/register/
+		/admin/
